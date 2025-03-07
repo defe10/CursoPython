@@ -1,4 +1,8 @@
-"""1. Diseña una función que tome como parámetro 2 números, y que devuelva una lista que contenga TODOS los números enteros entre estos 2 incluyendo AMBOS parámetros.
+"""
+Federico Casoni - Sabados presencial
+
+
+1. Diseña una función que tome como parámetro 2 números, y que devuelva una lista que contenga TODOS los números enteros entre estos 2 incluyendo AMBOS parámetros.
 Ejemplo: los parámetros para mi función son 1 y 9, por lo tanto, mi función retornara: [1,2,3,4,5,6,7,8,9]"""
 
 def num_usuario (numero1, numero2):
