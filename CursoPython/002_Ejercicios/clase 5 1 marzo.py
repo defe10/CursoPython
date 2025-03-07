@@ -24,8 +24,3 @@
 
 
 
-#  Escriba un modulo que muestre todos los números primos entre 1 y un numero n que es ingresado por un parámetro. 
-
-def primos (numero):
-
-    if numero 

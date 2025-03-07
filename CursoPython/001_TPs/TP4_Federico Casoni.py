@@ -22,53 +22,153 @@ print (numeros (9, 12))
 
 
 2. Escribir una función que tome como parámetro 2 números, y retorne una lista con todos los números pares entre estos, EXCLUYENDO a los parámetros.
-Ejemplo: los parámetros son 4 y 9, por lo tanto, la función retornara: [6,8]"""
+Ejemplo: los parámetros son 4 y 9, por lo tanto, la función retornara: [6,8]
 
 
 def numeros (numero1, numero2):
     lista=[]
 
-    if numero1 <= numero2:
-
-        if numero1 %2 != 0:
-            numero1 = numero1 +1
-        
-        elif numero1 %2 == 0:
-            numero1 = numero1 +2
-
-        elif numero2 %2 != 0:
-            numero2 = numero2 -1
-        
-        elif numero2 %2 == 0:
-            numero2 = numero2 -2
-
-
-        for i in range (numero1, numero2, 2):
-                lista.append(i)
-    
+    if numero1 < numero2:
+        uno = numero1
+        dos = numero2
     else:
-         
-        if numero1 %2 != 0:
-            numero1 = numero1 -1
-        
-        elif numero1 %2 == 0:
-            numero1 = numero1 -2
+        uno = numero2
+        dos = numero1
 
-        elif numero2 %2 != 0:
-            numero2 = numero2 +1
-        
-        elif numero2 %2 == 0:
-            numero2 = numero2 +2
-         
-        for i in range (numero1, numero2, -2):
-                lista.append(i)
+    if uno % 2 != 0:
+        uno = uno +1
+    else:
+        uno = uno +2
 
+    if dos %2 !=0:
+        dos = dos - 1
+    else:
+        dos = dos -2
 
+    for i in range (uno, dos +1, 2):
+        lista.append(i)
 
     return lista
 
 
-print (numeros (1, 9))
-print (numeros (9,1))
+print (numeros (2, 9))
+print (numeros (-9,1))
 
 
+3. Escribir una función que tome 2 parámetros, el primero que reciba una cadena, y el segundo que reciba un carácter. La función tendrá que retornar la cantidad de veces que aparece ese carácter en esa cadena.
+Ejemplo: si los parámetros son “Hola mi nombre es Sebastián” y “s”, la función tendrá que retornar 3 ya que la “s” se encuentra 3 veces repetidas en mi cadena.
+
+def cantidad (cadena, caracter):
+    contador = 0
+
+    for i in range (0, len(cadena)):
+        letra = cadena [i]
+
+        if letra == caracter:
+         contador = contador +1
+    
+    return contador
+
+frase_usuario = input("Ingrese una frase: ")
+letra_usuario = input("Ingrese una letra: ")
+veces = cantidad (frase_usuario,letra_usuario)
+
+print (f"{frase_usuario} contiene {veces} veces la letra {letra_usuario}")
+
+4. Elaborar una función que tome como parámetro 2 números, y retorne una lista con todos los números primos entre ese rango de números.
+Ejemplo: mis parámetros son 4 y 45, la función tendrá que retornar: [5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43].
+
+def verificar_primo(numero):
+
+    if numero <= 1:
+        return False
+
+    for divisor in range(2, int(numero**0.5) + 1):
+        if numero % divisor == 0:
+            return False  
+        
+
+    return True
+
+def primos (numero1, numero2):
+    lista_primos = []
+
+    for i in range(numero1, numero2 + 1):
+        if verificar_primo(i):  
+            lista_primos.append(i)  
+
+    return lista_primos 
+
+
+num1_usuario = int (input("Ingrese un número entero: "))
+num2_usuario = int( input("Ingrese un número entero: "))
+
+lista_entrega = primos(num1_usuario, num2_usuario)
+print(lista_entrega)
+
+
+5. Elaborar una función que tome como parámetro una lista, y devuelva un bool que diga si en esa lista TODOS sus números son pares.
+
+def validar_pares (lista_numeros):
+ 
+    
+    for numero in lista_numeros:
+        if numero % 2 != 0:
+            return False
+
+ 
+    return True
+           
+
+        
+
+lista = [2,4,6,8,10,222]
+
+numeros_pares = validar_pares (lista)
+
+print (numeros_pares)
+
+6. Elaborar una función que tome como parámetro una lista y devuelva un bool que diga si en esa lista TODOS sus números son primos.
+
+def verificar_primo(numero):
+
+    if numero <= 1:
+        return False
+
+    for divisor in range(2, int(numero**0.5) + 1):
+        if numero % divisor == 0:
+            return False  
+    return True
+
+
+def validar_primos (lista_numeros):
+  
+    for numero in lista_numeros:
+        if verificar_primo (numero) == False:
+            return False
+
+ 
+    return True
+
+        
+
+lista = [3,11]
+
+numeros_primos = validar_primos (lista)
+
+print (numeros_primos)
+
+
+1.
+Hacer una calculadora, que tenga las siguientes operaciones.
+a.
+Suma
+b.
+Resta
+c.
+Multiplicación
+d.
+División
+e.
+Potencia
+El usuario podrá elegir qué operación hacer y con que números. En caso de que el usuario ingrese como opción “SALIR” la calculadora se cerrara."""
