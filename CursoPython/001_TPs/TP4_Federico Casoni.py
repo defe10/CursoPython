@@ -1,7 +1,7 @@
 """1. Diseña una función que tome como parámetro 2 números, y que devuelva una lista que contenga TODOS los números enteros entre estos 2 incluyendo AMBOS parámetros.
 Ejemplo: los parámetros para mi función son 1 y 9, por lo tanto, mi función retornara: [1,2,3,4,5,6,7,8,9]
 
-def numeros (numero1, numero2):
+def num_usuario (numero1, numero2):
     lista = []
     if numero1 <= numero2:
 
@@ -17,15 +17,15 @@ def numeros (numero1, numero2):
 
 
 
-print (numeros (12, 9))
-print (numeros (9, 12))
+print (num_usuario (12, 9))
+print (num_usuario (9, 12))
 
 
 2. Escribir una función que tome como parámetro 2 números, y retorne una lista con todos los números pares entre estos, EXCLUYENDO a los parámetros.
 Ejemplo: los parámetros son 4 y 9, por lo tanto, la función retornara: [6,8]
 
 
-def numeros (numero1, numero2):
+def num_usuario (numero1, numero2):
     lista=[]
 
     if numero1 < numero2:
@@ -51,8 +51,8 @@ def numeros (numero1, numero2):
     return lista
 
 
-print (numeros (2, 9))
-print (numeros (-9,1))
+print (num_usuario (2, 9))
+print (num_usuario (-9,1))
 
 
 3. Escribir una función que tome 2 parámetros, el primero que reciba una cadena, y el segundo que reciba un carácter. La función tendrá que retornar la cantidad de veces que aparece ese carácter en esa cadena.
@@ -109,10 +109,10 @@ print(lista_entrega)
 
 5. Elaborar una función que tome como parámetro una lista, y devuelva un bool que diga si en esa lista TODOS sus números son pares.
 
-def validar_pares (lista_numeros):
+def validar_pares (lista_num_usuario):
  
     
-    for numero in lista_numeros:
+    for numero in lista_num_usuario:
         if numero % 2 != 0:
             return False
 
@@ -124,9 +124,9 @@ def validar_pares (lista_numeros):
 
 lista = [2,4,6,8,10,222]
 
-numeros_pares = validar_pares (lista)
+num_usuario_pares = validar_pares (lista)
 
-print (numeros_pares)
+print (num_usuario_pares)
 
 6. Elaborar una función que tome como parámetro una lista y devuelva un bool que diga si en esa lista TODOS sus números son primos.
 
@@ -141,9 +141,9 @@ def verificar_primo(numero):
     return True
 
 
-def validar_primos (lista_numeros):
+def validar_primos (lista_num_usuario):
   
-    for numero in lista_numeros:
+    for numero in lista_num_usuario:
         if verificar_primo (numero) == False:
             return False
 
@@ -154,21 +154,95 @@ def validar_primos (lista_numeros):
 
 lista = [3,11]
 
-numeros_primos = validar_primos (lista)
+num_usuario_primos = validar_primos (lista)
 
-print (numeros_primos)
+print (num_usuario_primos)
 
 
-1.
-Hacer una calculadora, que tenga las siguientes operaciones.
-a.
-Suma
-b.
-Resta
-c.
-Multiplicación
-d.
-División
-e.
-Potencia
+1. Hacer una calculadora, que tenga las siguientes operaciones.
+a. Suma
+b. Resta
+c. Multiplicación
+d. División
+e. Potencia
 El usuario podrá elegir qué operación hacer y con que números. En caso de que el usuario ingrese como opción “SALIR” la calculadora se cerrara."""
+
+def suma (lista_suma):
+    resultado = 0
+    for i in range (0,len(lista_suma)):
+      resultado = resultado + lista_suma[i]
+
+    return resultado
+
+
+def resta (lista_resta):
+    resultado = lista_resta[0]
+   
+    for i in range (1,len(lista_resta)):
+      resultado = resultado - lista_resta[i]
+   
+
+    return resultado
+   
+
+
+def mult (lista_mult):
+    resultado = 1
+    for i in range (0,len(lista_mult)):
+      resultado = resultado * lista_mult[i]
+
+    return resultado
+
+
+def div (lista_div):
+    resultado = lista_div[0]
+
+    for i in range (1,len(lista_div)):
+       resultado = resultado / lista_div [i]
+    
+    return resultado
+
+# def pot (lista_pot):
+   
+#    for i in range (0,len(lista_pot)):
+
+
+
+
+
+
+
+
+while True:
+ op_usuario = input("Ingrese una operación (+,-,*,/,**): ")
+ num_usuario = float(input("Ingrese un número: "))
+ num_usuario = [num_usuario]
+ 
+
+  
+ if op_usuario == "+":
+    resultado = suma(num_usuario)
+ elif op_usuario == "-":
+    resultado = resta(num_usuario)
+ elif op_usuario == "*":
+    resultado = mult(num_usuario)
+ elif op_usuario == "/":
+    resultado = div(num_usuario)
+ elif op_usuario == "**":
+    resultado = pot(num_usuario)
+
+
+    print(f"El resultado es: {resultado}")
+
+
+
+   
+
+
+
+
+
+# lista = [15,-4, 22]
+# resultado = div(lista)
+# print(resultado)
+
