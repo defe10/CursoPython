@@ -73,8 +73,6 @@ def modificar_alumno(alumno): # <------- modificar datos de cada alumo
 
 
 
-
-
 def agregar_alumno():  # <------ agregar alumnos
     nombre = input("Ingrese el nombre del alumno: ")
     apellido = input("Ingrese el apellido del alumno: ")
