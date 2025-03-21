@@ -30,7 +30,7 @@ def mostrar_alumno(alumno): # <-------- mostrar los datos de cada alumno
     print(f"DNI: {alumno['DNI']}")
     print(f"Fecha de Nacimiento: {alumno['Fecha de nacimiento']}")
     print(f"Tutor: {alumno['Tutor']}")
-    print(f"Notas: {', '.join(map(str, alumno['Notas']))}")
+    print(f"Notas: {', '.join(map(str, alumno['Notas']))}") # <----- Esto lo saqué de un foro, con .join aplico la "," y el espacio y con map se lo aplico a cada elemento de la lista.
     print(f"Faltas: {alumno['Faltas']}")
     print(f"Amonestaciones: {alumno['amonestaciones']}")
     print("------")
@@ -81,7 +81,7 @@ def agregar_alumno():  # <------ agregar alumnos
     dni = input("Ingrese el DNI del alumno: ")
     fecha_nacimiento = input("Ingrese la fecha de nacimiento (dd/mm/aaaa): ")
     tutor = input("Ingrese el nombre y apellido del tutor: ")
-    notas = input("Ingrese las notas separadas por comas (ej: 7,8,9): ").split(',')
+    notas = input("Ingrese las notas separadas por comas (ej: 7,8,9): ").split(',') 
     notas = [int(nota) for nota in notas]
     faltas = int(input("Ingrese las faltas: "))
     amonestaciones = int(input("Ingrese las amonestaciones: "))
