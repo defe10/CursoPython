@@ -1,48 +1,53 @@
-"""TP de Federico Casoni - Sabados -  Presencial"""
+
+datos = {"Alumnos": []} 
 
 
-datos = {   # <---- Diccionario con datos de alumnos
-    "Alumnos": [
-        {
-            "Nombre": "Federico",
-            "Apellido": "Casoni",
-            "DNI": "11222333",
-            "Fecha de nacimiento": "14/08/1978",
-            "Tutor": "Nico M",
-            "Notas": [7, 8, 9],
-            "Faltas": 3,
-            "amonestaciones": 1
-        },
-        {
-            "Nombre": "Juan",
-            "Apellido": "García",
-            "DNI": "22333444",
-            "Fecha de nacimiento": "15/05/2011",
-            "Tutor": "Pablo T",
-            "Notas": [8, 9, 10],
-            "Faltas": 1,
-            "amonestaciones": 0
-        }
-    ]
-}
+def guardar_datos():
+    archivo = open("datos.txt", "w")
+    for alumno in datos["Alumnos"]:
+        archivo.write(f"{alumno['Nombre']},{alumno['Apellido']},{alumno['DNI']},{alumno['Fecha de nacimiento']},{alumno['Tutor']},{'|'.join(map(str, alumno['Notas']))},{alumno['Faltas']},{alumno['amonestaciones']}\n")
+    archivo.close()
 
-def mostrar_alumno(alumno): # <-------- mostrar los datos de cada alumno
+
+def cargar_datos():
+    archivo = open("datos.txt", "r")
+    lineas = archivo.readlines()
+    archivo.close()
+    
+    datos["Alumnos"] = []
+    for linea in lineas:
+        elementos = linea.strip().split(",")
+        nombre, apellido, dni, fecha_nacimiento, tutor = elementos[:5]
+        notas = list(map(int, elementos[5].split("|")))
+        faltas, amonestaciones = map(int, elementos[6:8])
+        
+        datos["Alumnos"].append({
+            "Nombre": nombre,
+            "Apellido": apellido,
+            "DNI": dni,
+            "Fecha de nacimiento": fecha_nacimiento,
+            "Tutor": tutor,
+            "Notas": notas,
+            "Faltas": faltas,
+            "amonestaciones": amonestaciones
+        })
+
+
+cargar_datos()
+
+
+def mostrar_alumno(alumno): 
     print(f"Nombre: {alumno['Nombre']}")
     print(f"Apellido: {alumno['Apellido']}")
     print(f"DNI: {alumno['DNI']}")
     print(f"Fecha de Nacimiento: {alumno['Fecha de nacimiento']}")
     print(f"Tutor: {alumno['Tutor']}")
-    print(f"Notas: {', '.join(map(str, alumno['Notas']))}") # <----- Esto lo saqué de un foro, con .join aplico la "," y el espacio y con map se lo aplico a cada elemento de la lista.
+    print(f"Notas: {', '.join(map(str, alumno['Notas']))}") 
     print(f"Faltas: {alumno['Faltas']}")
     print(f"Amonestaciones: {alumno['amonestaciones']}")
     print("------")
 
-
-
-
-
-
-def modificar_alumno(alumno): # <------- modificar datos de cada alumo
+def modificar_alumno(alumno):  
     print("Agregue nuevo dato o aprete ENTER.")
     nombre = input(f"Nombre: ")
     apellido = input(f"Apellido: ")
@@ -70,12 +75,10 @@ def modificar_alumno(alumno): # <------- modificar datos de cada alumo
     if amonestaciones:
         alumno['amonestaciones'] = int(amonestaciones)
 
+    guardar_datos()  
     print("Datos actualizados")
 
-
-
-
-def agregar_alumno():  # <------ agregar alumnos
+def agregar_alumno():  
     nombre = input("Ingrese el nombre del alumno: ")
     apellido = input("Ingrese el apellido del alumno: ")
     dni = input("Ingrese el DNI del alumno: ")
@@ -98,29 +101,26 @@ def agregar_alumno():  # <------ agregar alumnos
     }
 
     datos["Alumnos"].append(nuevo_alumno)
+    guardar_datos()  
     print("Alumno agregado")
 
-
-
-
-def expulsar_alumno(dni): # <---- expulsar a un alumnos
+def expulsar_alumno(dni): 
     for alumno in datos["Alumnos"]:
         if alumno["DNI"] == dni:
             datos["Alumnos"].remove(alumno)
+            guardar_datos() 
             print(f"El alumno ha sido expulsado.")
             return
     print(f"No se encontró ningún alumno con DNI {dni}.")
 
-
-def mostrar_todos_los_alumnos(): # <----- mostrar todos los alumnos
+def mostrar_todos_los_alumnos(): 
     if not datos["Alumnos"]:
         print("No hay alumnos registrados.")
     else:
         for alumno in datos["Alumnos"]:
             mostrar_alumno(alumno)
 
-
-def opciones(): # <------ opciones
+def opciones(): 
     while True:
         print("1. Mostrar todos los alumnos")
         print("2. Agregar alumnos")
@@ -143,7 +143,7 @@ def opciones(): # <------ opciones
             else:
                 print(f"No hay alumno con ese número de DNI")
         elif opcion == "4":
-            dni = input("Ingrese el DNI del alumno que quiere expulsar expulsar: ")
+            dni = input("Ingrese el DNI del alumno que quiere expulsar: ")
             expulsar_alumno(dni)
         elif opcion == "5":
             print("Adios")
